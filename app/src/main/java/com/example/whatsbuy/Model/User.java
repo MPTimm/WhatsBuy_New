@@ -2,40 +2,81 @@ package com.example.whatsbuy.Model;
 
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.regex.Pattern;
 
-public class User implements IUser{
+import java.util.ArrayList;
+import java.util.List;
 
-    private String email, password;
+public class User implements Parcelable{
 
-    public User(String email, String password) {
-        this.email = email;
+    private int id;
+    private String name;
+    private String userLogin;
+    private String password;
+
+    public User(int id, String name, String userLogin, String password) {
+        this.id = id;
+        this.name = name;
+        this.userLogin = userLogin;
         this.password = password;
     }
 
-    @Override
-    public String getEmail() {
-        return email;
+    protected User(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        userLogin = in.readString();
+        password = in.readString();
     }
 
-    @Override
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTitulo() {
+        return userLogin+" - "+name+" ("+id+")";
+    }
     public String getPassword() {
         return password;
     }
 
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
-    public int isValid() {
-        if(TextUtils.isEmpty(getEmail()))
-        {
-            return 0;
-        }else if(!Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches()){
-            return 1;
-        }else if(TextUtils.isEmpty(getPassword())){
-            return 2;
-        }else if(getPassword().length()<=6){
-            return 3;
-        }else
-            return -1;
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(userLogin);
+        parcel.writeString(password);
     }
 }
