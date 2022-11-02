@@ -10,7 +10,7 @@ import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.whatsbuy.Model.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,8 +18,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.whatsbuy.Model.User;
 
 public class UserRepository implements IUserRepository, Listener<JSONArray>, Response.ErrorListener {
 
@@ -63,7 +61,7 @@ public class UserRepository implements IUserRepository, Listener<JSONArray>, Res
         }
         return instance;
     }
-    // metodo para criar um objeto User apartir de um json
+    // metodo para criar um objeto User a partir de um json
     public User createUserFromJson(JSONObject json) {
         try {
             return new User(json.getInt("id"), json.getString("name"),

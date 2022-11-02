@@ -14,7 +14,7 @@ import com.example.whatsbuy.R;
 import java.util.List;
 
 import com.example.whatsbuy.Model.User;
-import com.example.whatsbuy.View.
+import com.example.whatsbuy.View.Activity2;
 
 public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -41,7 +41,7 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         ((TextView) holder.itemView.findViewById(R.id.textViewName)).setText(obj.getName());
         holder.itemView.setOnClickListener((view)->{
             Intent intent = new Intent (view.getContext(), Activity2.class);
-            Intent.putExtra("id", obj.getId());
+            intent.putExtra("id", obj.getId());
             view.getContext().startActivity(intent);
         });
     }

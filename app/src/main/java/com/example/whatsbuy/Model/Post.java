@@ -3,6 +3,8 @@ package com.example.whatsbuy.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.whatsbuy.Repository.UserRepository;
+
 public class Post implements Parcelable {
 
 
