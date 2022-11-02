@@ -1,42 +1,38 @@
 package com.example.whatsbuy.Controller;
 
-import com.example.whatsbuy.Model.User;
-import com.example.whatsbuy.View.ILoginView;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class LoginController implements ILoginController{
+import androidx.appcompat.app.AppCompatActivity;
 
-    ILoginView loginView;
+import com.example.whatsbuy.R;
 
-    public LoginController(ILoginView loginView) {
-        this.loginView = loginView;
-    }
+public class LoginController extends AppCompatActivity {
+
+    EditText et_username, et_password;
+    Button btn_login;
 
     @Override
-    public void OnLogin(String email, String password) {
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
-        User user = new User(email, password);
-        int logincode = user.isValid();
-
-        if(logincode == 0)
-        {
-            loginView.OnLoginError("Please Enter Email");
-
-        }else if(logincode == 1)
-        {
-            loginView.OnLoginError("Please emter a valid email");
-
-        }else if(logincode == 2)
-        {
-            loginView.OnLoginError("Please enter a password");
-
-        }else if(logincode == 3)
-        {
-            loginView.OnLoginError("Password should be more than 6 characters");
-
-        }else
-        {
-            loginView.OnLoginSuccess("Login Success");
-        }
-
+        Login();
     }
+
+    void Login(){
+        et_username = (EditText) findViewById(R.id.et_username);
+        et_password = (EditText) findViewById(R.id.et_password);
+        btn_login = (Button) findViewById(R.id.btn_login);
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
 }
