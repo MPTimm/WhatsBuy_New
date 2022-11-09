@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1052886062007",
+    "project_id": "whatsbuy-9458a",
+    "storage_bucket": "whatsbuy-9458a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052886062007:android:941e0cec67fe3ba6ce8e32",
+        "android_client_info": {
+          "package_name": "com.example.whatsbuy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052886062007-lpp3ormgs59g1j7csfk3se1pdpfh8ufv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSBh7V8LxBw1wEE2vkKL_Yl26WUghwEEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052886062007-lpp3ormgs59g1j7csfk3se1pdpfh8ufv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,13 +12,29 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.example.whatsbuy.Adapter.ProductAdapter;
+import com.example.whatsbuy.Model.Product;
 import com.example.whatsbuy.R;
-import com.example.whatsbuy.Adapter.UsersAdapter;
-import com.example.whatsbuy.Model.User;
-import com.example.whatsbuy.Repository.OnReadyListener;
-import com.example.whatsbuy.Repository.UserRepository;
 
-public class MainActivity {
 
+import java.util.ArrayList;
+
+public class MainActivity extends  AppCompatActivity{
+
+    ArrayList<Product> products;
+
+    @Override
+    protected void onCreate (Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        RecyclerView rvProducts = (RecyclerView) findViewById(R.id.rvProducts);
+
+        products = Product.createProductsList(10, "Banana");
+        ProductAdapter adapter = new ProductAdapter(products);
+
+        rvProducts.setAdapter(adapter);
+        rvProducts.setLayoutManager(new LinearLayoutManager(this));
+    }
 
 }
