@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,21 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.whatsbuy.Model.Product;
 import com.example.whatsbuy.R;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder>{
 
+    private List<Product> mProducts;
+    private LayoutInflater mInflater;
+
+
     @NonNull
     @Override
-    public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-
-        View productView = inflater.inflate(R.layout.item_product, parent, false);
-
-        ViewHolder viewHolder = new ViewHolder(productView);
-        return viewHolder;
+        View mItemView = mInflater.inflate(R.layout.item_product,parent,false);
+        return new ViewHolder(mItemView, this);
     }
 
     @Override
@@ -51,19 +50,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         public TextView nameTextView;
         public EditText qtdText;
+        final ProductAdapter mAdapter;
 
-        public ViewHolder(View itemView){
+        public ViewHolder(View itemView, ProductAdapter adapter){
             super(itemView);
 
             nameTextView = (TextView) itemView.findViewById(R.id.product_name);
             qtdText = (EditText) qtdText.findViewById(R.id.et_qtd);
+
+            this.mAdapter = adapter;
         }
 
+
     }
 
-    private List<Product> mProducts;
-
-    public ProductAdapter(List<Product> products){
-        mProducts = products;
+    public ProductAdapter(Context context, List<Product> productList){
+        mInflater = LayoutInflater.from(context);
+        this.mProducts = productList;
     }
+
+
 }
